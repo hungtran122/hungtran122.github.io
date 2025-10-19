@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Project Details - ML Engineer Portfolio">
+    <title>Project Details | Your Name - ML Engineer & Manager</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .project-detail-section {
+            padding: 80px 0;
+        }
+
+        .project-detail-header {
+            margin-bottom: 60px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .project-detail-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+        }
+
+        .project-detail-meta {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            margin-top: 24px;
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .project-detail-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .project-detail-meta-label {
+            font-weight: 600;
+            color: var(--accent-primary);
+        }
+
+        .project-detail-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 60px;
+            max-width: 900px;
+        }
+
+        .detail-section {
+            animation: fadeInUp 0.6s ease-out forwards;
+            opacity: 0;
+        }
+
+        .detail-section:nth-child(1) { animation-delay: 0.1s; }
+        .detail-section:nth-child(2) { animation-delay: 0.2s; }
+        .detail-section:nth-child(3) { animation-delay: 0.3s; }
+        .detail-section:nth-child(4) { animation-delay: 0.4s; }
+
+        .detail-section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .detail-section-title::before {
+            content: '';
+            display: inline-block;
+            width: 4px;
+            height: 24px;
+            background: var(--accent-primary);
+            border-radius: 2px;
+        }
+
+        .detail-section-content {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .detail-section-content p {
+            margin-bottom: 16px;
+        }
+
+        .detail-section-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tech-showcase {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .tech-showcase .tech-tag {
+            background: rgba(0, 212, 255, 0.15);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            color: var(--accent-primary);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent-primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            margin-bottom: 40px;
+        }
+
+        .back-button:hover {
+            transform: translateX(-4px);
+        }
+
+        .back-button::before {
+            content: '←';
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 768px) {
+            .project-detail-section {
+                padding: 48px 0;
+            }
+
+            .project-detail-meta {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .detail-section-title {
+                font-size: 1.25rem;
+            }
+
+            .detail-section-content {
+                font-size: 1rem;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Effect -->
+    <div id="background-effect">
+        <div class="gradient-blob blob-1"></div>
+        <div class="gradient-blob blob-2"></div>
+        <div class="gradient-blob blob-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-logo">YourName</div>
+        <ul class="nav-links">
+            <li><a href="/" class="nav-item">Home</a></li>
+            <li><a href="/#projects" class="nav-item">Projects</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <section class="project-detail-section">
+            <div class="container">
+                <a href="/" class="back-button">Back to Portfolio</a>
+
+                <div class="project-detail-header">
+                    <h1 class="project-detail-title" id="projectTitle">Project Title</h1>
+                    <div class="project-detail-meta">
+                        <div class="project-detail-meta-item">
+                            <span class="project-detail-meta-label">Role:</span>
+                            <span id="projectRole"></span>
+                        </div>
+                        <div class="project-detail-meta-item">
+                            <span class="project-detail-meta-label">Period:</span>
+                            <span id="projectDate"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-detail-content">
+                    <div class="detail-section">
+                        <div class="detail-section-title">Challenge</div>
+                        <div class="detail-section-content" id="projectChallenge"></div>
+                    </div>
+
+                    <div class="detail-section">
+                        <div class="detail-section-title">Solution</div>
+                        <div class="detail-section-content" id="projectSolution"></div>
+                    </div>
+
+                    <div class="detail-section">
+                        <div class="detail-section-title">Technical Implementation</div>
+                        <div class="detail-section-content" id="projectTechnical"></div>
+                        <div class="tech-showcase" id="techShowcase"></div>
+                    </div>
+
+                    <div class="detail-section">
+                        <div class="detail-section-title">Results & Impact</div>
+                        <div class="detail-section-content" id="projectResults"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p class="footer-text">Your Name © 2025 | Built with passion for ML</p>
+                <ul class="footer-links">
+                    <li><a href="/#about">About</a></li>
+                    <li><a href="/#resume">Resume</a></li>
+                    <li><a href="/#projects">Projects</a></li>
+                    <li><a href="/#skills">Skills</a></li>
+                </ul>
+                <p class="footer-text">Crafted with attention to detail</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/project-page.js"></script>
+</body>
+</html>
