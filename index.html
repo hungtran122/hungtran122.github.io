@@ -21,9 +21,6 @@
             --text-secondary: #a0aec0;
             --text-muted: #718096;
             
-            --success: #10b981;
-            --warning: #f59e0b;
-            
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
@@ -123,14 +120,8 @@
         }
 
         @keyframes slideDown {
-            from {
-                transform: translateY(-70px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
+            from { transform: translateY(-70px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
         .nav-logo {
@@ -205,14 +196,8 @@
         }
 
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .hero-name {
@@ -274,10 +259,6 @@
             box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
         }
 
-        .btn-primary:active {
-            transform: scale(0.98);
-        }
-
         .btn-secondary {
             background: transparent;
             border: 2px solid var(--accent-primary);
@@ -287,10 +268,6 @@
         .btn-secondary:hover {
             background: rgba(0, 212, 255, 0.1);
             transform: scale(1.05);
-        }
-
-        .btn-secondary:active {
-            transform: scale(0.98);
         }
 
         .scroll-indicator {
@@ -338,9 +315,6 @@
         /* About Section */
         #about {
             padding: 80px 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
         .about-content {
@@ -367,7 +341,6 @@
         }
 
         .about-image img:hover {
-            filter: grayscale(0);
             box-shadow: 0 0 40px rgba(0, 212, 255, 0.8);
         }
 
@@ -404,73 +377,369 @@
             min-width: 20px;
         }
 
-        /* Impact Metrics Section */
-        #metrics {
+        /* Resume Section */
+        #resume {
             padding: 80px 0;
         }
 
-        .metrics-grid {
+        .resume-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .resume-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 16px;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
             margin-top: 48px;
         }
 
-        .metric-card {
+        .resume-group {
+            animation: fadeInUp 0.6s ease-out forwards;
+            opacity: 0;
+        }
+
+        .resume-group:nth-child(1) { animation-delay: 0.1s; }
+        .resume-group:nth-child(2) { animation-delay: 0.2s; }
+        .resume-group:nth-child(3) { animation-delay: 0.3s; }
+        .resume-group:nth-child(4) { animation-delay: 0.4s; }
+
+        .resume-group-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--accent-primary);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .resume-item {
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .resume-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .resume-item-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .resume-item-subtitle {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+        }
+
+        .resume-item-description {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .role-progression {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-top: 8px;
+        }
+
+        .role-progression span {
+            color: var(--accent-primary);
+            font-weight: 600;
+        }
+
+        /* Projects Section */
+        #projects {
+            padding: 80px 0;
+        }
+
+        .filter-tags {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 48px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .filter-tag {
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 1px solid var(--card-border);
+            background: transparent;
+            color: var(--text-secondary);
+        }
+
+        .filter-tag:hover {
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+        }
+
+        .filter-tag.active {
+            background: var(--accent-gradient);
+            color: var(--text-primary);
+            border-color: var(--accent-primary);
+        }
+
+        .timeline {
+            position: relative;
+            padding: 40px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--accent-primary), var(--accent-secondary));
+        }
+
+        .timeline-year {
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .year-marker {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: var(--accent-primary);
+            border: 3px solid var(--primary-bg);
+            border-radius: 50%;
+            top: 0;
+            z-index: 10;
+        }
+
+        .year-label {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-primary);
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 5;
+        }
+
+        .timeline-projects {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .project-card {
             background: var(--card-bg);
             backdrop-filter: blur(10px);
             border: 1px solid var(--card-border);
             border-radius: 16px;
             padding: 24px;
-            min-height: 150px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
+            max-width: 500px;
             transition: var(--transition);
             animation: fadeInUp 0.6s ease-out forwards;
             opacity: 0;
+            cursor: pointer;
+            position: relative;
+            margin-left: 52%;
         }
 
-        .metric-card:nth-child(1) { animation-delay: 0.1s; }
-        .metric-card:nth-child(2) { animation-delay: 0.2s; }
-        .metric-card:nth-child(3) { animation-delay: 0.3s; }
-        .metric-card:nth-child(4) { animation-delay: 0.4s; }
-        .metric-card:nth-child(5) { animation-delay: 0.5s; }
-        .metric-card:nth-child(6) { animation-delay: 0.6s; }
+        .project-card:nth-of-type(even) {
+            margin-left: 0;
+            margin-right: 52%;
+        }
 
-        .metric-card:hover {
+        .project-card:hover {
             transform: translateY(-4px);
             border-color: rgba(0, 212, 255, 0.3);
             box-shadow: 0 12px 48px rgba(0, 212, 255, 0.2);
         }
 
-        .metric-icon {
-            font-size: 2.5rem;
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
             margin-bottom: 12px;
         }
 
-        .metric-value {
-            font-size: 2.5rem;
+        .project-title {
+            font-size: 1.25rem;
             font-weight: 700;
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 8px;
+            color: var(--text-primary);
+            margin-bottom: 4px;
         }
 
-        .metric-label {
+        .project-date {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .role-badge {
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            color: var(--accent-primary);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .project-description {
             font-size: 0.95rem;
             color: var(--text-secondary);
-            font-weight: 500;
-            margin-bottom: 8px;
+            line-height: 1.6;
+            margin-bottom: 12px;
         }
 
-        .metric-context {
+        .project-metrics {
+            background: rgba(0, 212, 255, 0.05);
+            border: 1px solid rgba(0, 212, 255, 0.15);
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 12px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .metric-badge {
+            background: rgba(0, 212, 255, 0.15);
+            color: var(--accent-primary);
+            padding: 4px 10px;
+            border-radius: 6px;
             font-size: 0.8rem;
-            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .tech-tag {
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            color: var(--accent-primary);
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 0.8rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .project-expand {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .project-expand:hover {
+            transform: translateX(4px);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: var(--secondary-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 32px;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            animation: slideUp 0.3s ease-out;
+            position: relative;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(40px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            color: var(--accent-primary);
+        }
+
+        .modal-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            margin-top: 16px;
+        }
+
+        .modal-section {
+            margin-bottom: 24px;
+        }
+
+        .modal-section-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .modal-section-content {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
         }
 
         /* Skills Section */
@@ -478,71 +747,53 @@
             padding: 80px 0;
         }
 
+        .skills-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 16px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
             margin-top: 48px;
         }
 
-        .skill-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--card-border);
-            border-radius: 16px;
-            padding: 20px;
-            aspect-ratio: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            transition: var(--transition);
+        .skill-domain {
             animation: fadeInUp 0.6s ease-out forwards;
             opacity: 0;
         }
 
-        .skill-card:nth-child(1) { animation-delay: 0.1s; }
-        .skill-card:nth-child(2) { animation-delay: 0.2s; }
-        .skill-card:nth-child(3) { animation-delay: 0.3s; }
-        .skill-card:nth-child(4) { animation-delay: 0.4s; }
-        .skill-card:nth-child(5) { animation-delay: 0.5s; }
-        .skill-card:nth-child(6) { animation-delay: 0.6s; }
-        .skill-card:nth-child(7) { animation-delay: 0.7s; }
-        .skill-card:nth-child(8) { animation-delay: 0.8s; }
+        .skill-domain:nth-child(1) { animation-delay: 0.1s; }
+        .skill-domain:nth-child(2) { animation-delay: 0.2s; }
+        .skill-domain:nth-child(3) { animation-delay: 0.3s; }
 
-        .skill-card:hover {
-            transform: translateY(-4px) scale(1.05);
-            border-color: rgba(0, 212, 255, 0.5);
-            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+        .skill-domain-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
         }
 
-        .skill-name {
-            font-size: 1rem;
+        .skill-category {
+            margin-bottom: 20px;
+        }
+
+        .skill-category-name {
+            font-size: 0.95rem;
             font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 12px;
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        .skill-bar {
-            width: 100%;
-            height: 6px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 3px;
-            overflow: hidden;
+            color: var(--text-secondary);
             margin-bottom: 8px;
         }
 
-        .skill-bar-fill {
-            height: 100%;
-            background: var(--accent-gradient);
-            border-radius: 3px;
-        }
-
-        .skill-level {
-            font-size: 0.75rem;
+        .skill-items {
+            font-size: 0.9rem;
             color: var(--text-muted);
+            line-height: 1.7;
+            padding-left: 12px;
         }
 
         /* Contact Section */
@@ -681,7 +932,30 @@
             color: var(--accent-primary);
         }
 
-        /* Responsive Design */
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .timeline::before {
+                left: 0;
+            }
+
+            .year-marker {
+                left: 0;
+            }
+
+            .project-card {
+                margin-left: 32px !important;
+                margin-right: 0 !important;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .resume-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         @media (max-width: 768px) {
             nav {
                 padding: 0 24px;
@@ -724,26 +998,12 @@
                 order: -1;
             }
 
-            #about {
-                padding: 48px 0;
-            }
-
-            #metrics,
-            #skills,
-            #contact {
+            #about, #resume, #projects, #skills, #contact {
                 padding: 48px 0;
             }
 
             .section-underline {
                 margin-bottom: 32px;
-            }
-
-            .metrics-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .skills-grid {
-                grid-template-columns: repeat(3, 1fr);
             }
 
             .contact-form {
@@ -753,6 +1013,11 @@
             .footer-links {
                 gap: 16px;
                 font-size: 0.75rem;
+            }
+
+            .modal-content {
+                margin: 16px;
+                max-height: 90vh;
             }
         }
 
@@ -778,14 +1043,6 @@
                 height: 150px;
             }
 
-            .metrics-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .skills-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
             .social-icons {
                 gap: 16px;
             }
@@ -794,6 +1051,10 @@
                 width: 50px;
                 height: 50px;
                 font-size: 1.25rem;
+            }
+
+            .modal-content {
+                padding: 20px;
             }
         }
 
@@ -820,10 +1081,10 @@
         <div class="nav-logo">YourName</div>
         <ul class="nav-links">
             <li><a href="#about" class="nav-item">About</a></li>
-            <li><a href="#metrics" class="nav-item">Metrics</a></li>
+            <li><a href="#resume" class="nav-item">Resume</a></li>
+            <li><a href="#projects" class="nav-item">Projects</a></li>
             <li><a href="#skills" class="nav-item">Skills</a></li>
             <li><a href="#contact" class="nav-item">Contact</a></li>
-            <li><a href="#" class="nav-item">Resume</a></li>
         </ul>
         <button class="hamburger" id="hamburger">
             <span></span>
@@ -877,54 +1138,317 @@
                             <div class="about-highlight">ML Engineer & Technical Leader</div>
                             <div class="about-highlight">13+ Years in Production ML Systems</div>
                             <div class="about-highlight">Computer Vision & Deep Learning Expert</div>
-                            <div class="about-highlight">Top 0.3% Ranked on Kaggle</div>
+                            <div class="about-highlight">Team Lead: 8 ML Engineers</div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Impact Metrics Section -->
-        <section id="metrics">
+        <!-- Resume Section -->
+        <section id="resume">
             <div class="container">
-                <h2 class="section-heading">Impact Metrics</h2>
+                <div class="resume-content">
+                    <h2 class="section-heading">Resume & Credentials</h2>
+                    <div class="section-underline"></div>
+
+                    <div class="resume-grid">
+                        <!-- Education -->
+                        <div class="resume-group">
+                            <div class="resume-group-title">Education</div>
+                            <div class="resume-item">
+                                <div class="resume-item-title">Master of System Engineering</div>
+                                <div class="resume-item-subtitle">Keio University, Japan</div>
+                                <div class="resume-item-description">School of System Design and Management, Sep 2013 - Sep 2015</div>
+                            </div>
+                            <div class="resume-item">
+                                <div class="resume-item-title">Bachelor of Applied Mathematics and Informatics</div>
+                                <div class="resume-item-subtitle">Hanoi University of Science and Technology, Vietnam</div>
+                                <div class="resume-item-description">Sep 2005 - Sep 2010</div>
+                            </div>
+                        </div>
+
+                        <!-- Certifications -->
+                        <div class="resume-group">
+                            <div class="resume-group-title">Certifications</div>
+                            <div class="resume-item">
+                                <div class="resume-item-title">Project Management Professional (PMP)</div>
+                                <div class="resume-item-subtitle">Project Management Institute</div>
+                                <div class="resume-item-description">Japan Chapter Certified</div>
+                            </div>
+                        </div>
+
+                        <!-- Career Progression -->
+                        <div class="resume-group">
+                            <div class="resume-group-title">Career Evolution</div>
+                            <div class="resume-item">
+                                <div class="resume-item-title">ML Engineer → Lead ML Engineer → Manager</div>
+                                <div class="resume-item-description">2019: Started as Lead ML Engineer</div>
+                                <div class="resume-item-description">2021: Promoted to Senior position</div>
+                                <div class="resume-item-description">2023: Transitioned to Management role</div>
+                            </div>
+                        </div>
+
+                        <!-- Achievements -->
+                        <div class="resume-group">
+                            <div class="resume-group-title">Kaggle Achievement</div>
+                            <div class="resume-item">
+                                <div class="resume-item-title">Kaggle Expert</div>
+                                <div class="resume-item-subtitle">Top 0.3% Rank: 543 / 201,211</div>
+                                <div class="resume-item-description">3 Silver Medals | 4 Bronze Medals</div>
+                                <div class="resume-item-description">Notable: Steel Defect Detection (Rank 17/2427), Satellite Imagery (Rank 28/1531), Autonomous Driving (Rank 47/864)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <div class="container">
+                <h2 class="section-heading">Projects & Experience</h2>
                 <div class="section-underline"></div>
-                <div class="metrics-grid">
-                    <div class="metric-card">
-                        <div class="metric-icon">🎯</div>
-                        <div class="metric-value">99.8%</div>
-                        <div class="metric-label">Accuracy</div>
-                        <div class="metric-context">License Plate OCR</div>
+                
+                <div class="filter-tags">
+                    <button class="filter-tag active" data-filter="all">All</button>
+                    <button class="filter-tag" data-filter="adas">ADAS</button>
+                    <button class="filter-tag" data-filter="ocr">OCR</button>
+                    <button class="filter-tag" data-filter="automotive">Automotive</button>
+                    <button class="filter-tag" data-filter="cv">Computer Vision</button>
+                    <button class="filter-tag" data-filter="vlm">VLM</button>
+                    <button class="filter-tag" data-filter="legacy">Earlier Work</button>
+                </div>
+
+                <div class="timeline">
+                    <!-- 2025 -->
+                    <div class="timeline-year">
+                        <div class="year-marker"></div>
+                        <div class="year-label">2025</div>
+                        <div class="timeline-projects">
+                            <div class="project-card" data-tags="cv,vlm">
+                                <div class="project-header">
+                                    <div>
+                                        <div class="project-title">Hand Gesture Recognition</div>
+                                        <div class="project-date">Dec 2024 - Feb 2025</div>
+                                    </div>
+                                    <div class="role-badge">Lead ML Engineer</div>
+                                </div>
+                                <p class="project-description">Built real-time hand gesture recognition with hybrid LSTM + XGBoost architecture. Led data collection and MVP development.</p>
+                                <div class="project-metrics">
+                                    <span class="metric-badge">30+ FPS Real-time</span>
+                                    <span class="metric-badge">95%+ Accuracy</span>
+                                </div>
+                                <div class="project-tags">
+                                    <span class="tech-tag">LSTM</span>
+                                    <span class="tech-tag">XGBoost</span>
+                                    <span class="tech-tag">OpenCV</span>
+                                    <span class="tech-tag">Real-time</span>
+                                </div>
+                                <a class="project-expand" onclick="openModal(this)">View Details →</a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="metric-card">
-                        <div class="metric-icon">✅</div>
-                        <div class="metric-value">100%</div>
-                        <div class="metric-label">Success Rate</div>
-                        <div class="metric-context">Parking Demos</div>
+
+                    <!-- 2024 -->
+                    <div class="timeline-year">
+                        <div class="year-marker"></div>
+                        <div class="year-label">2024</div>
+                        <div class="timeline-projects">
+                            <div class="project-card" data-tags="vlm,ocr">
+                                <div class="project-header">
+                                    <div>
+                                        <div class="project-title">VLM-OCR Product</div>
+                                        <div class="project-date">Jun 2024 - Present</div>
+                                    </div>
+                                    <div class="role-badge">Lead ML Engineer</div>
+                                </div>
+                                <p class="project-description">Led team to fine-tune Vision-Language Models with zero-error inference system for major education company.</p>
+                                <div class="project-metrics">
+                                    <span class="metric-badge">Zero-Error Production</span>
+                                    <span class="metric-badge">99.95% Confidence</span>
+                                </div>
+                                <div class="project-tags">
+                                    <span class="tech-tag">VLM</span>
+                                    <span class="tech-tag">BERT</span>
+                                    <span class="tech-tag">PyTorch</span>
+                                    <span class="tech-tag">Fine-tuning</span>
+                                </div>
+                                <a class="project-expand" onclick="openModal(this)">View Details →</a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="metric-card">
-                        <div class="metric-icon">⚡</div>
-                        <div class="metric-value">50%</div>
-                        <div class="metric-label">Faster</div>
-                        <div class="metric-context">Experiment Cycles</div>
+
+                    <!-- 2023-2024 -->
+                    <div class="timeline-year">
+                        <div class="year-marker"></div>
+                        <div class="year-label">2023-2024</div>
+                        <div class="timeline-projects">
+                            <div class="project-card" data-tags="automotive,ocr,cv">
+                                <div class="project-header">
+                                    <div>
+                                        <div class="project-title">Japanese License Plate Recognition</div>
+                                        <div class="project-date">Oct 2023 - Nov 2024</div>
+                                    </div>
+                                    <div class="role-badge">Manager</div>
+                                </div>
+                                <p class="project-description">Led design and deployment achieving 99.8% accuracy for major parking operator nationwide deployment.</p>
+                                <div class="project-metrics">
+                                    <span class="metric-badge">99.8% Accuracy</span>
+                                    <span class="metric-badge">50+ Deployments</span>
+                                    <span class="metric-badge">500+ plates/min</span>
+                                </div>
+                                <div class="project-tags">
+                                    <span class="tech-tag">CNN</span>
+                                    <span class="tech-tag">Attention</span>
+                                    <span class="tech-tag">LSTM</span>
+                                    <span class="tech-tag">TensorRT</span>
+                                </div>
+                                <a class="project-expand" onclick="openModal(this)">View Details →</a>
+                            </div>
+
+                            <div class="project-card" data-tags="automotive,cv">
+                                <div class="project-header">
+                                    <div>
+                                        <div class="project-title">Automatic Parking System</div>
+                                        <div class="project-date">Oct 2023 - Present</div>
+                                    </div>
+                                    <div class="role-badge">Manager</div>
+                                </div>
+                                <p class="project-description">Directed keypoint prediction models for autonomous parking with engagement from major automotive OEMs.</p>
+                                <div class="project-metrics">
+                                    <span class="metric-badge">100% Demo Success</span>
+                                    <span class="metric-badge">60 FPS Real-time</span>
+                                    <span class="metric-badge">98.5% Accuracy</span>
+                                </div>
+                                <div class="project-tags">
+                                    <span class="tech-tag">Keypoint Detection</span>
+                                    <span class="tech-tag">Synthetic Data</span>
+                                    <span class="tech-tag">TensorRT</span>
+                                    <span class="tech-tag">Real-time</span>
+                                </div>
+                                <a class="project-expand" onclick="openModal(this)">View Details →</a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="metric-card">
-                        <div class="metric-icon">👥</div>
-                        <div class="metric-value">8</div>
-                        <div class="metric-label">Engineers Led</div>
-                        <div class="metric-context">Team Leadership</div>
+
+                    <!-- 2022-2024 -->
+                    <div class="timeline-year">
+                        <div class="year-marker"></div>
+                        <div class="year-label">2022-2024</div>
+                        <div class="timeline-projects">
+                            <div class="project-card" data-tags="ocr">
+                                <div class="project-header">
+                                    <div>
+                                        <div class="project-title">OCR Product Platform</div>
+                                        <div class="project-date">Jan 2022 - Present</div>
+                                    </div>
+                                    <div class="role-badge">Lead ML Engineer</div>
+                                </div>
+                                <p class="project-description">Managed end-to-end OCR product with multiple customer deployments. Built MLOps pipelines and production systems.</p>
+                                <div class="project-metrics">
+                                    <span class="metric-badge">Multiple Customers</span>
+                                    <span class="metric-badge">Production AWS Deployment</span>
+                                </div>
+                                <div class="project-tags">
+                                    <span class="tech-tag">CNN</span>
+                                    <span class="tech-tag">LSTM</span>
+                                    <span class="tech-tag">Transformer</span>
+                                    <span class="tech-tag">MLflow</span>
+                                    <span class="tech-tag">DVC</span>
+                                    <span class="tech-tag">PyQt5</span>
+                                </div>
+                                <a class="project-expand" onclick="openModal(this)">View Details →</a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="metric-card">
-                        <div class="metric-icon">🏆</div>
-                        <div class="metric-value">Top 0.3%</div>
-                        <div class="metric-label">Kaggle Rank</div>
-                        <div class="metric-context">543 / 201,211</div>
+
+                    <!-- 2019-Present -->
+                    <div class="timeline-year">
+                        <div class="year-marker"></div>
+                        <div class="year-label">2019-Present</div>
+                        <div class="timeline-projects">
+                            <div class="project-card" data-tags="adas,cv,automotive">
+                                <div class="project-header">
+                                    <div>
+                                        <div class="project-title">ADAS (Advanced Driver Assistance)</div>
+                                        <div class="project-date">Feb 2019 - Present</div>
+                                    </div>
+                                    <div class="role-badge">Lead ML Engineer</div>
+                                </div>
+                                <p class="project-description">Led 8-engineer team delivering perception systems to tier-1 automotive suppliers with 50% experiment cycle improvement.</p>
+                                <div class="project-metrics">
+                                    <span class="metric-badge">8 Engineers Led</span>
+                                    <span class="metric-badge">50% Faster Cycles</span>
+                                    <span class="metric-badge">Tier-1 Deployment</span>
+                                </div>
+                                <div class="project-tags">
+                                    <span class="tech-tag">Object Detection</span>
+                                    <span class="tech-tag">MLflow</span>
+                                    <span class="tech-tag">W&B</span>
+                                    <span class="tech-tag">TensorRT</span>
+                                    <span class="tech-tag">Quantization</span>
+                                </div>
+                                <a class="project-expand" onclick="openModal(this)">View Details →</a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="metric-card">
-                        <div class="metric-icon">📊</div>
-                        <div class="metric-value">13+</div>
-                        <div class="metric-label">Years</div>
-                        <div class="metric-context">ML Experience</div>
+
+                    <!-- Earlier Work -->
+                    <div class="timeline-year">
+                        <div class="year-marker"></div>
+                        <div class="year-label">2015-2018</div>
+                        <div class="timeline-projects">
+                            <div class="project-card" data-tags="legacy">
+                                <div class="project-header">
+                                    <div>
+                                        <div class="project-title">Lidar SDK Development</div>
+                                        <div class="project-date">Mar 2017 - Oct 2018</div>
+                                    </div>
+                                    <div class="role-badge">Software Engineer</div>
+                                </div>
+                                <p class="project-description">Developed GUI software for Lidar systems using C# and Winforms Framework at Alink Corp, Yokohama.</p>
+                                <div class="project-tags">
+                                    <span class="tech-tag">C#</span>
+                                    <span class="tech-tag">Winforms</span>
+                                    <span class="tech-tag">GUI</span>
+                                </div>
+                                <a class="project-expand" onclick="openModal(this)">View Details →</a>
+                            </div>
+
+                            <div class="project-card" data-tags="legacy">
+                                <div class="project-header">
+                                    <div>
+                                        <div class="project-title">Small Satellite System Architecture</div>
+                                        <div class="project-date">Oct 2015 - Mar 2017</div>
+                                    </div>
+                                    <div class="role-badge">System Engineer</div>
+                                </div>
+                                <p class="project-description">Designed system architecture and interfaces for small satellite at Vietnam National Space Center.</p>
+                                <div class="project-tags">
+                                    <span class="tech-tag">Systems Engineering</span>
+                                    <span class="tech-tag">Architecture</span>
+                                </div>
+                                <a class="project-expand" onclick="openModal(this)">View Details →</a>
+                            </div>
+
+                            <div class="project-card" data-tags="legacy">
+                                <div class="project-header">
+                                    <div>
+                                        <div class="project-title">3G Base Transceiver Station</div>
+                                        <div class="project-date">Sep 2010 - Oct 2012</div>
+                                    </div>
+                                    <div class="role-badge">Software Engineer</div>
+                                </div>
+                                <p class="project-description">Developed 3G BTS software using C++ at NTT DATA Vietnam for telecommunications infrastructure.</p>
+                                <div class="project-tags">
+                                    <span class="tech-tag">C++</span>
+                                    <span class="tech-tag">Telecom</span>
+                                    <span class="tech-tag">3G Networks</span>
+                                </div>
+                                <a class="project-expand" onclick="openModal(this)">View Details →</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -933,64 +1457,90 @@
         <!-- Skills Section -->
         <section id="skills">
             <div class="container">
-                <h2 class="section-heading">Skills & Technologies</h2>
-                <div class="section-underline"></div>
-                <div class="skills-grid">
-                    <div class="skill-card">
-                        <div class="skill-name">Python</div>
-                        <div class="skill-bar">
-                            <div class="skill-bar-fill" style="width: 95%;"></div>
+                <div class="skills-content">
+                    <h2 class="section-heading">Skills & Technologies</h2>
+                    <div class="section-underline"></div>
+
+                    <div class="skills-grid">
+                        <!-- Computer Vision -->
+                        <div class="skill-domain">
+                            <div class="skill-domain-title">Computer Vision</div>
+                            
+                            <div class="skill-category">
+                                <div class="skill-category-name">Deep Learning</div>
+                                <div class="skill-items">CNN, Object Detection, Semantic Segmentation, Lane Detection, Instance Segmentation, Multi-object Tracking</div>
+                            </div>
+
+                            <div class="skill-category">
+                                <div class="skill-category-name">Classical Methods</div>
+                                <div class="skill-items">OpenCV, Image Processing, Keypoint Detection, Line Prediction, Feature Extraction, Morphological Operations</div>
+                            </div>
+
+                            <div class="skill-category">
+                                <div class="skill-category-name">Deployment & Optimization</div>
+                                <div class="skill-items">TensorRT, ONNX, Real-time Inference, Quantization, Knowledge Distillation, Model Optimization</div>
+                            </div>
                         </div>
-                        <div class="skill-level">Expert</div>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-name">PyTorch</div>
-                        <div class="skill-bar">
-                            <div class="skill-bar-fill" style="width: 90%;"></div>
+
+                        <!-- OCR & Text Extraction -->
+                        <div class="skill-domain">
+                            <div class="skill-domain-title">OCR & Text Extraction</div>
+                            
+                            <div class="skill-category">
+                                <div class="skill-category-name">Deep Learning Models</div>
+                                <div class="skill-items">LSTM, Attention Mechanism, BERT, VLM (Vision Language Models), Transformer, End-to-end Architectures</div>
+                            </div>
+
+                            <div class="skill-category">
+                                <div class="skill-category-name">Tools & Frameworks</div>
+                                <div class="skill-items">PyTorch, Synthetic Data Generation, Domain Adaptation, Hallucination Detection, Verification Pipelines</div>
+                            </div>
+
+                            <div class="skill-category">
+                                <div class="skill-category-name">Document Understanding</div>
+                                <div class="skill-items">Text Detection, Table Detection, Orientation Classification, Layout Analysis, LLM Integration</div>
+                            </div>
                         </div>
-                        <div class="skill-level">Expert</div>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-name">CNN</div>
-                        <div class="skill-bar">
-                            <div class="skill-bar-fill" style="width: 92%;"></div>
+
+                        <!-- MLOps & Production -->
+                        <div class="skill-domain">
+                            <div class="skill-domain-title">MLOps & Production Systems</div>
+                            
+                            <div class="skill-category">
+                                <div class="skill-category-name">Experiment Tracking</div>
+                                <div class="skill-items">MLflow, Weights & Biases, DVC (Data Version Control), Gradio, Model Registry</div>
+                            </div>
+
+                            <div class="skill-category">
+                                <div class="skill-category-name">Deployment & Infrastructure</div>
+                                <div class="skill-items">Flask, Gradio, AWS, Docker, C++ SDK Development, PyQt5 Applications, Streamlit</div>
+                            </div>
+
+                            <div class="skill-category">
+                                <div class="skill-category-name">Optimization Techniques</div>
+                                <div class="skill-items">Pruning, Post-training Quantization, Layer Fusion, Knowledge Distillation, Active Learning, Auto-labeling</div>
+                            </div>
                         </div>
-                        <div class="skill-level">Expert</div>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-name">TensorRT</div>
-                        <div class="skill-bar">
-                            <div class="skill-bar-fill" style="width: 88%;"></div>
+
+                        <!-- Programming Languages -->
+                        <div class="skill-domain">
+                            <div class="skill-domain-title">Programming & Tools</div>
+                            
+                            <div class="skill-category">
+                                <div class="skill-category-name">Languages</div>
+                                <div class="skill-items">Python (Expert), C++ (Advanced), C# (Advanced), SQL</div>
+                            </div>
+
+                            <div class="skill-category">
+                                <div class="skill-category-name">Data Science & ML</div>
+                                <div class="skill-items">NumPy, Pandas, Polars, Scikit-learn, Matplotlib, Seaborn, Plotly, Optuna, XGBoost, LightGBM</div>
+                            </div>
+
+                            <div class="skill-category">
+                                <div class="skill-category-name">Deep Learning Frameworks</div>
+                                <div class="skill-items">PyTorch, TensorFlow, Keras, Hugging Face, NCNN, MNN</div>
+                            </div>
                         </div>
-                        <div class="skill-level">Advanced</div>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-name">LSTM</div>
-                        <div class="skill-bar">
-                            <div class="skill-bar-fill" style="width: 85%;"></div>
-                        </div>
-                        <div class="skill-level">Advanced</div>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-name">VLM</div>
-                        <div class="skill-bar">
-                            <div class="skill-bar-fill" style="width: 80%;"></div>
-                        </div>
-                        <div class="skill-level">Advanced</div>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-name">MLOps</div>
-                        <div class="skill-bar">
-                            <div class="skill-bar-fill" style="width: 85%;"></div>
-                        </div>
-                        <div class="skill-level">Advanced</div>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-name">Docker</div>
-                        <div class="skill-bar">
-                            <div class="skill-bar-fill" style="width: 82%;"></div>
-                        </div>
-                        <div class="skill-level">Advanced</div>
                     </div>
                 </div>
             </div>
@@ -1007,18 +1557,10 @@
                         Let's build something amazing together.
                     </p>
                     <div class="social-icons">
-                        <a href="mailto:your.email@example.com" class="social-icon" title="Email">
-                            📧
-                        </a>
-                        <a href="https://linkedin.com" target="_blank" class="social-icon" title="LinkedIn">
-                            💼
-                        </a>
-                        <a href="https://github.com" target="_blank" class="social-icon" title="GitHub">
-                            🐙
-                        </a>
-                        <a href="https://kaggle.com" target="_blank" class="social-icon" title="Kaggle">
-                            🏆
-                        </a>
+                        <a href="mailto:your.email@example.com" class="social-icon" title="Email">📧</a>
+                        <a href="https://linkedin.com" target="_blank" class="social-icon" title="LinkedIn">💼</a>
+                        <a href="https://github.com" target="_blank" class="social-icon" title="GitHub">🐙</a>
+                        <a href="https://kaggle.com" target="_blank" class="social-icon" title="Kaggle">🏆</a>
                     </div>
                     <form class="contact-form">
                         <div class="form-group">
@@ -1040,6 +1582,34 @@
         </section>
     </main>
 
+    <!-- Modal for Project Details -->
+    <div class="modal" id="projectModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <h3 class="modal-title" id="modalTitle">Project Title</h3>
+
+            <div class="modal-section">
+                <div class="modal-section-title">Challenge</div>
+                <div class="modal-section-content" id="modalChallenge"></div>
+            </div>
+
+            <div class="modal-section">
+                <div class="modal-section-title">Solution</div>
+                <div class="modal-section-content" id="modalSolution"></div>
+            </div>
+
+            <div class="modal-section">
+                <div class="modal-section-title">Technical Implementation</div>
+                <div class="modal-section-content" id="modalTechnical"></div>
+            </div>
+
+            <div class="modal-section">
+                <div class="modal-section-title">Results & Impact</div>
+                <div class="modal-section-content" id="modalResults"></div>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -1047,7 +1617,8 @@
                 <p class="footer-text">Your Name © 2025 | Built with passion for ML</p>
                 <ul class="footer-links">
                     <li><a href="#about">About</a></li>
-                    <li><a href="#metrics">Metrics</a></li>
+                    <li><a href="#resume">Resume</a></li>
+                    <li><a href="#projects">Projects</a></li>
                     <li><a href="#skills">Skills</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
@@ -1057,55 +1628,31 @@
     </footer>
 
     <script>
-        // Smooth scroll for navigation
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const href = this.getAttribute('href');
-                if (href !== '#') {
-                    e.preventDefault();
-                    const target = document.querySelector(href);
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                }
-            });
-        });
-
-        // Update active nav link on scroll
-        window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('section[id]');
-            const navItems = document.querySelectorAll('.nav-item');
-            
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (window.pageYOffset >= sectionTop - 200) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navItems.forEach(item => {
-                item.classList.remove('active');
-                if (item.getAttribute('href') === `#${current}`) {
-                    item.classList.add('active');
-                }
-            });
-        });
-
-        // Contact form submission
-        document.querySelector('.contact-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Thank you for your message! This is a demo. Integrate with a backend service to send actual emails.');
-            e.target.reset();
-        });
-
-        // Hamburger menu
-        document.getElementById('hamburger').addEventListener('click', () => {
-            alert('Mobile menu - Coming in next phase');
-        });
-    </script>
-</body>
-</html>
+        // Project data for modal
+        const projectData = {
+            'Hand Gesture Recognition': {
+                challenge: 'Building real-time gesture recognition required robust hand keypoint detection, temporal pattern recognition, and low-latency inference for interactive applications across varying hand sizes and lighting conditions.',
+                solution: 'Implemented hybrid approach combining LSTM for temporal sequence modeling with XGBoost for spatial feature classification. Led data collection with coordinated participants and created comprehensive data capture guidelines.',
+                technical: 'Architecture: MediaPipe for 21-point hand keypoint detection, LSTM for temporal analysis, XGBoost for gesture classification. Real-time optimization: 30+ FPS on edge devices using TensorRT. Data pipeline: 100+ gesture videos with augmentation.',
+                results: '95%+ accuracy across 10+ gestures. Real-time performance: 30+ FPS. MVP successfully demonstrated with 99% reliability in interactive media player control.'
+            },
+            'VLM-OCR Product': {
+                challenge: 'Traditional OCR struggled with complex documents and domain-specific text. Needed zero-error inference for critical financial documents from major education company with hallucination mitigation.',
+                solution: 'Fine-tuned Vision-Language Models on customer-specific datasets combining synthetic and real data. Developed verification framework using traditional OCR methods to detect and mitigate hallucinations.',
+                technical: 'Fine-tuned BERT encoder with visual ResNet backbone. Custom attention for cross-modal alignment. Synthetic data generation for domain adaptation. Verification pipeline using multiple OCR methods. AWS deployment with monitoring.',
+                results: 'Zero-error inference deployed in production. 99.95% confidence on all predictions. Domain adaptation improved accuracy by 30%. Production-grade system for major education company.'
+            },
+            'Japanese License Plate Recognition': {
+                challenge: 'License plate recognition required handling varying formats, weather conditions, occlusion, and lighting. Needed 99%+ accuracy for police department deployment across Japan with tier-1 operator.',
+                solution: 'Designed multi-stage deep learning pipeline: YOLOv8 for plate detection, ResNet with attention for character recognition, LSTM for sequence correction. Led team through design and deployment.',
+                technical: 'Stage 1: YOLOv8 for plate localization. Stage 2: ResNet-34 + Attention for character recognition. Stage 3: LSTM for sequence correction. Training data: 100K real + 200K synthetic plates. TensorRT optimization: 500+ plates/minute.',
+                results: '99.8% character-level accuracy achieved. Deployed to 50+ police stations nationwide. 500+ plates/minute processing capacity. False positive rate < 0.1%.'
+            },
+            'Automatic Parking System': {
+                challenge: 'Autonomous parking required precise keypoint and line prediction in real-world conditions with varying camera angles, lighting, and parking configurations. 100% reliability needed for commercial deployment.',
+                solution: 'Developed keypoint detection model trained on 100K synthetic scenarios. Implemented uncertainty estimation for safety. Supervised data pipeline with synthetic generation, labeling tools, and sampling strategies.',
+                technical: 'HRNet backbone for multi-scale extraction. 16 keypoint predictions per frame. Synthetic data augmentation and domain randomization. TensorRT optimization for real-time inference. Integration with path planning.',
+                results: '100% success rate in 20+ real-world demos. 98.5% detection accuracy. 60 FPS on edge hardware. Engagement from major Japanese automotive OEMs. Commercial-ready system.'
+            },
+            'OCR Product Platform': {
+                challenge: 'Building end-to-end OCR platform for multiple customers with diverse document types. Required MLOps infrastructure and rapid model iteration
