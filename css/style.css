@@ -471,56 +471,40 @@ section {
     border-color: var(--accent-primary);
 }
 
-/* Timeline with Grid */
-.timeline {
+/* Projects Grid Layout */
+.projects-container {
     position: relative;
+    z-index: 1;
     padding: 40px 0;
 }
 
-.timeline::before {
-    content: '';
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 2px;
-    height: 100%;
-    background: linear-gradient(180deg, var(--accent-primary), var(--accent-secondary));
-}
-
-.timeline-year {
+.projects-year-section {
     margin-bottom: 80px;
-    position: relative;
 }
 
-.year-marker {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 20px;
-    height: 20px;
-    background: var(--accent-primary);
-    border: 3px solid var(--primary-bg);
-    border-radius: 50%;
-    top: 0;
-    z-index: 10;
-}
-
-.year-label {
-    text-align: center;
+.projects-year-label {
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--accent-primary);
     margin-bottom: 48px;
-    position: relative;
-    z-index: 5;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.projects-year-label::before {
+    content: '';
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background: var(--accent-primary);
+    border-radius: 50%;
 }
 
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 24px;
-    max-width: 1000px;
-    margin: 0 auto;
 }
 
 .project-card {
@@ -731,16 +715,8 @@ footer {
 
 /* Responsive */
 @media (max-width: 1024px) {
-    .timeline::before {
-        left: 0;
-    }
-
-    .year-marker {
-        left: 0;
-    }
-
     .projects-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .skills-grid {

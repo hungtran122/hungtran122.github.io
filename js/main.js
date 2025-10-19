@@ -95,24 +95,19 @@ function filterProjects(filter) {
     renderTimeline(groupedByYear);
 }
 
-// Render timeline with grid layout
+// Render projects with grid layout
 function renderTimeline(groupedByYear) {
-    const timelineContainer = document.getElementById('projectsTimeline');
-    timelineContainer.innerHTML = '';
+    const projectsContainer = document.getElementById('projectsTimeline');
+    projectsContainer.innerHTML = '';
     
     Object.entries(groupedByYear).forEach(([year, projects]) => {
         // Create year section
         const yearSection = document.createElement('div');
-        yearSection.className = 'timeline-year';
-        
-        // Create year marker
-        const yearMarker = document.createElement('div');
-        yearMarker.className = 'year-marker';
-        yearSection.appendChild(yearMarker);
+        yearSection.className = 'projects-year-section';
         
         // Create year label
         const yearLabel = document.createElement('div');
-        yearLabel.className = 'year-label';
+        yearLabel.className = 'projects-year-label';
         yearLabel.textContent = year;
         yearSection.appendChild(yearLabel);
         
@@ -131,7 +126,7 @@ function renderTimeline(groupedByYear) {
         });
         
         yearSection.appendChild(grid);
-        timelineContainer.appendChild(yearSection);
+        projectsContainer.appendChild(yearSection);
     });
 }
 
