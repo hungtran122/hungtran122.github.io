@@ -2,51 +2,6 @@
 let projectsData = [];
 let currentFilter = 'all';
 
-// Fetch projects data
-async function loadProjects() {
-    try {
-        const response = await fetch('projects.json');
-        projectsData = await response.json();
-        
-        // Group projects by year
-        const groupedByYear = groupProjectsByYear(projectsData);
-        
-        // Render filter tags
-        renderFilterTags();
-        
-        // Render timeline
-        renderTimeline(groupedByYear);
-        
-        // Add click handlers to nav links
-        setupNavigation();
-    } catch (error) {
-        console.error('Error loading projects:', error);
-    }
-}
-
-// Group projects by year
-function groupProjectsByYear(projects) {
-    const grouped = {};
-    
-    projects.forEach(project => {
-        if (!grouped[project.year]) {
-            grouped[project.year] = [];
-        }
-        grouped[project.year].push(project);
-    });
-    
-    // Sort years in descending order
-    return Object.keys(grouped).sort((a, b) => {
-        // Extract first year from range (e.g., "2023-2024" -> 2023)
-        const aYear = parseInt(a.split('-')[0]);
-        const bYear = parseInt(b.split('-')[0]);
-        return bYear - aYear;
-    }).reduce((acc, year) => {
-        acc[year] = grouped[year];
-        return acc;
-    }, {});
-}
-
 // Get unique tags from all projects
 function getUniqueTags() {
     const tags = new Set();
@@ -78,58 +33,6 @@ function renderFilterTags() {
     });
 }
 
-// Filter projects by tag
-function filterProjects(filter) {
-    currentFilter = filter;
-    
-    // Update active filter button
-    document.querySelectorAll('.filter-tag').forEach(btn => {
-        btn.classList.remove('active');
-        if (btn.dataset.filter === filter) {
-            btn.classList.add('active');
-        }
-    });
-    
-    // Filter and re-render
-    const groupedByYear = groupProjectsByYear(projectsData);
-    renderTimeline(groupedByYear);
-}
-
-// Render projects with grid layout
-function renderTimeline(groupedByYear) {
-    const projectsContainer = document.getElementById('projectsTimeline');
-    projectsContainer.innerHTML = '';
-    
-    Object.entries(groupedByYear).forEach(([year, projects]) => {
-        // Create year section
-        const yearSection = document.createElement('div');
-        yearSection.className = 'projects-year-section';
-        
-        // Create year label
-        const yearLabel = document.createElement('div');
-        yearLabel.className = 'projects-year-label';
-        yearLabel.textContent = year;
-        yearSection.appendChild(yearLabel);
-        
-        // Create grid container
-        const grid = document.createElement('div');
-        grid.className = 'projects-grid';
-        
-        // Filter and add project cards
-        const filteredProjects = currentFilter === 'all' 
-            ? projects 
-            : projects.filter(p => p.tags.includes(currentFilter));
-        
-        filteredProjects.forEach(project => {
-            const card = createProjectCard(project);
-            grid.appendChild(card);
-        });
-        
-        yearSection.appendChild(grid);
-        projectsContainer.appendChild(yearSection);
-    });
-}
-
 // Create a project card element
 function createProjectCard(project) {
     const card = document.createElement('div');
@@ -148,7 +51,12 @@ function createProjectCard(project) {
     date.className = 'project-date';
     date.textContent = project.date;
     
+    const company = document.createElement('div');
+    company.className = 'project-company';
+    company.textContent = project.company;
+    
     titleDiv.appendChild(title);
+    titleDiv.appendChild(company);
     titleDiv.appendChild(date);
     header.appendChild(titleDiv);
     
@@ -198,6 +106,62 @@ function createProjectCard(project) {
     return card;
 }
 
+// Render all projects in reverse chronological order (latest to oldest)
+function renderAllProjects() {
+    const projectsContainer = document.getElementById('projectsTimeline');
+    
+    if (!projectsContainer) {
+        console.error('Projects container not found');
+        return;
+    }
+    
+    projectsContainer.innerHTML = '';
+    
+    // Create grid container
+    const grid = document.createElement('div');
+    grid.className = 'projects-grid';
+    
+    // Sort projects by start date (latest first)
+    const sortedProjects = [...projectsData].sort((a, b) => {
+        const aYear = parseInt(a.year.split('-')[0]);
+        const bYear = parseInt(b.year.split('-')[0]);
+        if (aYear !== bYear) return bYear - aYear;
+        
+        // If same year, sort by month if available
+        const aDate = new Date(a.date);
+        const bDate = new Date(b.date);
+        return bDate - aDate;
+    });
+    
+    // Filter and add project cards
+    const filteredProjects = currentFilter === 'all' 
+        ? sortedProjects 
+        : sortedProjects.filter(p => p.tags.includes(currentFilter));
+    
+    filteredProjects.forEach(project => {
+        const card = createProjectCard(project);
+        grid.appendChild(card);
+    });
+    
+    projectsContainer.appendChild(grid);
+}
+
+// Filter projects by tag
+function filterProjects(filter) {
+    currentFilter = filter;
+    
+    // Update active filter button
+    document.querySelectorAll('.filter-tag').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.dataset.filter === filter) {
+            btn.classList.add('active');
+        }
+    });
+    
+    // Filter and re-render (reverse chronological)
+    renderAllProjects();
+}
+
 // Setup navigation active state
 function setupNavigation() {
     const navLinks = document.querySelectorAll('.nav-item');
@@ -220,6 +184,27 @@ function setupNavigation() {
             }
         });
     });
+}
+
+// Fetch projects data
+async function loadProjects() {
+    try {
+        console.log('Loading projects...');
+        const response = await fetch('projects.json');
+        projectsData = await response.json();
+        console.log('Projects loaded:', projectsData.length);
+        
+        // Render filter tags
+        renderFilterTags();
+        
+        // Render all projects (reverse chronological)
+        renderAllProjects();
+        
+        // Add click handlers to nav links
+        setupNavigation();
+    } catch (error) {
+        console.error('Error loading projects:', error);
+    }
 }
 
 // Initialize on page load

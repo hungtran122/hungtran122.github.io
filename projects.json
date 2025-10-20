@@ -2,6 +2,7 @@
   {
     "id": "hand-gesture",
     "title": "Hand Gesture Recognition",
+    "company": "CompanyA",
     "date": "Dec 2024 - Feb 2025",
     "year": "2025",
     "role": "Lead ML Engineer",
@@ -17,6 +18,7 @@
   {
     "id": "vlm-ocr",
     "title": "VLM-OCR Product",
+    "company": "CompanyA",
     "date": "Jun 2024 - Present",
     "year": "2024",
     "role": "Lead ML Engineer",
@@ -32,6 +34,7 @@
   {
     "id": "license-plate",
     "title": "Japanese License Plate Recognition",
+    "company": "CompanyA",
     "date": "Oct 2023 - Nov 2024",
     "year": "2023-2024",
     "role": "Manager",
@@ -47,6 +50,7 @@
   {
     "id": "parking",
     "title": "Automatic Parking System",
+    "company": "CompanyA",
     "date": "Oct 2023 - Present",
     "year": "2023-2024",
     "role": "Manager",
@@ -62,6 +66,7 @@
   {
     "id": "ocr-platform",
     "title": "OCR Product Platform",
+    "company": "CompanyA",
     "date": "Jan 2022 - Present",
     "year": "2022-2024",
     "role": "Lead ML Engineer",
@@ -77,6 +82,7 @@
   {
     "id": "adas",
     "title": "ADAS (Advanced Driver Assistance)",
+    "company": "CompanyA",
     "date": "Feb 2019 - Present",
     "year": "2019-Present",
     "role": "Lead ML Engineer",
@@ -92,6 +98,7 @@
   {
     "id": "lidar-sdk",
     "title": "Lidar SDK Development",
+    "company": "CompanyA",
     "date": "Mar 2017 - Oct 2018",
     "year": "2015-2018",
     "role": "Software Engineer",
@@ -107,6 +114,7 @@
   {
     "id": "satellite",
     "title": "Small Satellite System Architecture",
+    "company": "CompanyA",
     "date": "Oct 2015 - Mar 2017",
     "year": "2015-2018",
     "role": "System Engineer",
@@ -122,6 +130,7 @@
   {
     "id": "3g-bts",
     "title": "3G Base Transceiver Station",
+    "company": "CompanyA",
     "date": "Sep 2010 - Oct 2012",
     "year": "2015-2018",
     "role": "Software Engineer",

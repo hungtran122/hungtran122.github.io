@@ -46,6 +46,7 @@ function renderProjectDetails() {
     
     // Render header
     document.getElementById('projectTitle').textContent = projectData.title;
+    document.getElementById('projectCompany').textContent = projectData.company;
     document.getElementById('projectRole').textContent = projectData.role;
     document.getElementById('projectDate').textContent = projectData.date;
     

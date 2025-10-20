@@ -116,7 +116,7 @@ nav {
 }
 
 .nav-logo {
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: 700;
     background: var(--accent-gradient);
     -webkit-background-clip: text;
@@ -478,32 +478,9 @@ section {
     padding: 40px 0;
 }
 
-.projects-year-section {
-    margin-bottom: 80px;
-}
-
-.projects-year-label {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--accent-primary);
-    margin-bottom: 48px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-}
-
-.projects-year-label::before {
-    content: '';
-    display: inline-block;
-    width: 12px;
-    height: 12px;
-    background: var(--accent-primary);
-    border-radius: 50%;
-}
-
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
     gap: 24px;
 }
 
@@ -541,6 +518,13 @@ section {
     font-size: 1.25rem;
     font-weight: 700;
     color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.project-company {
+    font-size: 0.9rem;
+    color: var(--accent-primary);
+    font-weight: 600;
     margin-bottom: 4px;
 }
 
