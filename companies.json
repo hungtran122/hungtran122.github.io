@@ -1,0 +1,26 @@
+[
+  {
+    "id": "ficha",
+    "name": "Ficha Inc.",
+    "location": "Tokyo, Japan",
+    "time": "Feb 2019 - Present"
+  },
+  {
+    "id": "alink",
+    "name": "Alink Corp",
+    "location": "Yokohama, Japan",
+    "time": "Mar 2017 - Oct 2018"
+  },
+  {
+    "id": "vnsc",
+    "name": "Vietnam National Space Center",
+    "location": "Hanoi, Vietnam",
+    "time": "Oct 2015 - Mar 2017"
+  },
+  {
+    "id": "ntt",
+    "name": "NTT DATA",
+    "location": "Hanoi, Vietnam",
+    "time": "Sep 2010 - Oct 2012"
+  }
+]

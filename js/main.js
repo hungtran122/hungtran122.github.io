@@ -1,5 +1,6 @@
 // Load and render projects on homepage
 let projectsData = [];
+let companiesData = [];
 let currentFilter = 'all';
 
 // Get unique tags from all projects
@@ -33,6 +34,11 @@ function renderFilterTags() {
     });
 }
 
+// Get company info by ID
+function getCompanyInfo(companyId) {
+    return companiesData.find(c => c.id === companyId);
+}
+
 // Create a project card element
 function createProjectCard(project) {
     const card = document.createElement('div');
@@ -51,12 +57,7 @@ function createProjectCard(project) {
     date.className = 'project-date';
     date.textContent = project.date;
     
-    const company = document.createElement('div');
-    company.className = 'project-company';
-    company.textContent = project.company;
-    
     titleDiv.appendChild(title);
-    titleDiv.appendChild(company);
     titleDiv.appendChild(date);
     header.appendChild(titleDiv);
     
@@ -66,6 +67,14 @@ function createProjectCard(project) {
     header.appendChild(badge);
     
     card.appendChild(header);
+    
+    // Description title
+    if (project.descriptionTitle) {
+        const descTitle = document.createElement('div');
+        descTitle.className = 'project-description-title';
+        descTitle.textContent = project.descriptionTitle;
+        card.appendChild(descTitle);
+    }
     
     const description = document.createElement('p');
     description.className = 'project-description';
@@ -106,7 +115,67 @@ function createProjectCard(project) {
     return card;
 }
 
-// Render all projects in reverse chronological order (latest to oldest)
+// Group projects by company
+function groupProjectsByCompany(projects) {
+    const grouped = {};
+    
+    projects.forEach(project => {
+        if (!grouped[project.company]) {
+            grouped[project.company] = [];
+        }
+        grouped[project.company].push(project);
+    });
+    
+    return grouped;
+}
+
+// Sort companies by latest project date (reverse chronological)
+function sortCompaniesByLatestDate(groupedByCompany) {
+    const companiesWithDates = Object.entries(groupedByCompany).map(([companyId, projects]) => {
+        const companyInfo = getCompanyInfo(companyId);
+        
+        // Find the latest project date in this company
+        const latestDate = projects.reduce((latest, project) => {
+            const projectYear = parseInt(project.year.split('-')[0]);
+            const latestYear = parseInt(latest.year.split('-')[0]);
+            if (projectYear !== latestYear) return projectYear > latestYear ? project : latest;
+            
+            const projectDate = new Date(project.date);
+            const latestDateObj = new Date(latest.date);
+            return projectDate > latestDateObj ? project : latest;
+        });
+        
+        return {
+            company: companyInfo,
+            projects,
+            latestDate: new Date(latestDate.date),
+            latestYear: parseInt(latestDate.year.split('-')[0])
+        };
+    });
+    
+    // Sort by latest year, then by latest date
+    companiesWithDates.sort((a, b) => {
+        if (a.latestYear !== b.latestYear) return b.latestYear - a.latestYear;
+        return b.latestDate - a.latestDate;
+    });
+    
+    return companiesWithDates;
+}
+
+// Sort projects within a company by reverse chronological order
+function sortProjectsReverseChronological(projects) {
+    return [...projects].sort((a, b) => {
+        const aYear = parseInt(a.year.split('-')[0]);
+        const bYear = parseInt(b.year.split('-')[0]);
+        if (aYear !== bYear) return bYear - aYear;
+        
+        const aDate = new Date(a.date);
+        const bDate = new Date(b.date);
+        return bDate - aDate;
+    });
+}
+
+// Render all projects grouped by company
 function renderAllProjects() {
     const projectsContainer = document.getElementById('projectsTimeline');
     
@@ -117,33 +186,45 @@ function renderAllProjects() {
     
     projectsContainer.innerHTML = '';
     
-    // Create grid container
-    const grid = document.createElement('div');
-    grid.className = 'projects-grid';
-    
-    // Sort projects by start date (latest first)
-    const sortedProjects = [...projectsData].sort((a, b) => {
-        const aYear = parseInt(a.year.split('-')[0]);
-        const bYear = parseInt(b.year.split('-')[0]);
-        if (aYear !== bYear) return bYear - aYear;
-        
-        // If same year, sort by month if available
-        const aDate = new Date(a.date);
-        const bDate = new Date(b.date);
-        return bDate - aDate;
-    });
-    
-    // Filter and add project cards
+    // Filter projects first
     const filteredProjects = currentFilter === 'all' 
-        ? sortedProjects 
-        : sortedProjects.filter(p => p.tags.includes(currentFilter));
+        ? projectsData 
+        : projectsData.filter(p => p.tags.includes(currentFilter));
     
-    filteredProjects.forEach(project => {
-        const card = createProjectCard(project);
-        grid.appendChild(card);
+    // Group by company
+    const groupedByCompany = groupProjectsByCompany(filteredProjects);
+    
+    // Sort companies by latest date
+    const sortedCompanies = sortCompaniesByLatestDate(groupedByCompany);
+    
+    // Render each company section
+    sortedCompanies.forEach(({ company, projects }) => {
+        // Create company section
+        const companySection = document.createElement('div');
+        companySection.className = 'company-section';
+        
+        // Create company header
+        const companyHeader = document.createElement('div');
+        companyHeader.className = 'company-header';
+        companyHeader.innerHTML = `${company.name} <span class="company-separator">|</span> <span class="company-meta">${company.location} | ${company.time}</span>`;
+        companySection.appendChild(companyHeader);
+        
+        // Create grid container
+        const grid = document.createElement('div');
+        grid.className = 'projects-grid';
+        
+        // Sort projects within company
+        const sortedProjects = sortProjectsReverseChronological(projects);
+        
+        // Add project cards
+        sortedProjects.forEach(project => {
+            const card = createProjectCard(project);
+            grid.appendChild(card);
+        });
+        
+        companySection.appendChild(grid);
+        projectsContainer.appendChild(companySection);
     });
-    
-    projectsContainer.appendChild(grid);
 }
 
 // Filter projects by tag
@@ -158,7 +239,7 @@ function filterProjects(filter) {
         }
     });
     
-    // Filter and re-render (reverse chronological)
+    // Filter and re-render
     renderAllProjects();
 }
 
@@ -186,18 +267,24 @@ function setupNavigation() {
     });
 }
 
-// Fetch projects data
+// Fetch projects and companies data
 async function loadProjects() {
     try {
-        console.log('Loading projects...');
-        const response = await fetch('projects.json');
-        projectsData = await response.json();
+        console.log('Loading projects and companies...');
+        
+        const projectsResponse = await fetch('projects.json');
+        projectsData = await projectsResponse.json();
+        
+        const companiesResponse = await fetch('companies.json');
+        companiesData = await companiesResponse.json();
+        
         console.log('Projects loaded:', projectsData.length);
+        console.log('Companies loaded:', companiesData.length);
         
         // Render filter tags
         renderFilterTags();
         
-        // Render all projects (reverse chronological)
+        // Render all projects grouped by company
         renderAllProjects();
         
         // Add click handlers to nav links

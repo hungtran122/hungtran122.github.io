@@ -478,6 +478,38 @@ section {
     padding: 40px 0;
 }
 
+.company-section {
+    margin-bottom: 80px;
+}
+
+.company-header {
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--accent-primary);
+    margin-bottom: 48px;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.company-separator {
+    color: var(--accent-primary);
+    font-weight: 700;
+}
+
+.company-meta {
+    font-size: 0.9rem;
+    font-weight: 400;
+    text-transform: none;
+    color: var(--text-secondary);
+    letter-spacing: normal;
+}
+
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
@@ -544,11 +576,22 @@ section {
     white-space: nowrap;
 }
 
+.project-description-title {
+    font-size: 1rem;
+    font-weight: 700;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+}
+
 .project-description {
     font-size: 0.95rem;
     color: var(--text-secondary);
     line-height: 1.6;
     margin-bottom: 12px;
+    white-space: pre-line;
 }
 
 .project-metrics {
