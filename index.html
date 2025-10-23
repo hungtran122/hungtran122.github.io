@@ -25,6 +25,12 @@
             <li><a href="#projects" class="nav-item">Projects</a></li>
             <li><a href="#skills" class="nav-item">Skills</a></li>
         </ul>
+        
+        <!-- Theme Toggle Button -->
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+            <span class="theme-icon">🌙</span>
+        </button>
+        
         <button class="hamburger" id="hamburger">
             <span></span>
             <span></span>
@@ -81,8 +87,7 @@
         <section id="background">
             <div class="container">
                 <div class="background-content">
-                    <h2 class="section-heading">Background & Credentials
-</h2>
+                    <h2 class="section-heading">Background & Credentials</h2>
                     <div class="section-underline"></div>
 
                     <div class="background-grid">
@@ -259,18 +264,15 @@
             <span class="contact-url">tmhung122@gmail.com</span>
         </button>
         <a href="https://github.com/hungtran122" target="_blank" class="contact-btn" data-tooltip="Click to open" title="Open GitHub">
-            <span class="contact-icon">⚙</span>
-            <span class="contact-label">GitHub</span>
+            <img src="github.svg" alt="" class="contact-icon-img">
             <span class="contact-url">https://github.com/hungtran122</span>
         </a>
         <a href="https://www.linkedin.com/in/tran-manh-hung-a2550053" target="_blank" class="contact-btn" data-tooltip="Click to open" title="Open LinkedIn">
-            <span class="contact-icon">💼</span>
-            <span class="contact-label">LinkedIn</span>
+            <img src="linkedin.svg" alt="" class="contact-icon-img">
             <span class="contact-url">https://www.linkedin.com/in/tran-manh-hung-a2550053</span>
         </a>
         <a href="https://www.kaggle.com/tmhung" target="_blank" class="contact-btn" data-tooltip="Click to open" title="Open Kaggle">
-            <span class="contact-icon">🏆</span>
-            <span class="contact-label">Kaggle</span>
+            <img src="kaggle.svg" alt="" class="contact-icon-img">
             <span class="contact-url">https://www.kaggle.com/tmhung</span>
         </a>
     </div>
@@ -293,5 +295,47 @@
             });
         }
     </script>
+
+    <script>
+    // Theme Toggle Functionality
+    const themeToggle = document.getElementById('theme-toggle');
+    const htmlElement = document.documentElement;
+    const themeIcon = document.querySelector('.theme-icon');
+
+    // Check for saved theme preference or default to system preference
+    function getPreferredTheme() {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            return savedTheme;
+        }
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    // Set theme
+    function setTheme(theme) {
+        if (theme === 'dark') {
+            htmlElement.setAttribute('data-theme', 'dark');
+            themeIcon.textContent = '☀️';
+        } else {
+            htmlElement.removeAttribute('data-theme');
+            themeIcon.textContent = '🌙';
+        }
+        localStorage.setItem('theme', theme);
+    }
+
+    // Toggle theme
+    function toggleTheme() {
+        const currentTheme = htmlElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        setTheme(newTheme);
+    }
+
+    // Initialize theme on page load
+    setTheme(getPreferredTheme());
+
+    // Add click event listener
+    themeToggle.addEventListener('click', toggleTheme);
+    </script>
+
 </body>
 </html>
