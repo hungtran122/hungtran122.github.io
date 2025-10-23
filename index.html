@@ -259,8 +259,7 @@
     <!-- Floating Contact Widget -->
     <div class="floating-contact">
         <button class="contact-btn" data-url="tmhung122@gmail.com" data-tooltip="Click to copy" onclick="copyContactUrl(event)" title="Click to copy email">
-            <span class="contact-icon">✉</span>
-            <span class="contact-label">Email</span>
+            <img src="email.svg" alt="" class="contact-icon-img">
             <span class="contact-url">tmhung122@gmail.com</span>
         </button>
         <a href="https://github.com/hungtran122" target="_blank" class="contact-btn" data-tooltip="Click to open" title="Open GitHub">
@@ -302,13 +301,14 @@
     const htmlElement = document.documentElement;
     const themeIcon = document.querySelector('.theme-icon');
 
-    // Check for saved theme preference or default to system preference
+    // Check for saved theme preference or default to DARK mode
     function getPreferredTheme() {
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme) {
             return savedTheme;
         }
-        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        // Changed: Default to dark mode instead of light
+        return 'dark';
     }
 
     // Set theme
@@ -330,7 +330,7 @@
         setTheme(newTheme);
     }
 
-    // Initialize theme on page load
+    // Initialize theme on page load - now defaults to dark
     setTheme(getPreferredTheme());
 
     // Add click event listener
