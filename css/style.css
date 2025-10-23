@@ -30,9 +30,9 @@
     --card-bg: #1A1A1A;
     --card-border: #2A2A2A;
     
-    --accent-primary: #66B3FF;
-    --accent-secondary: #80C0FF;
-    --accent-gradient: linear-gradient(135deg, #66B3FF 0%, #80C0FF 100%);
+    --accent-primary: #80C0FF;
+    --accent-secondary: #99CCFF;
+    --accent-gradient: linear-gradient(135deg, #80C0FF 0%, #99CCFF 100%);
     
     --text-primary: #FFFFFF;
     --text-secondary: #D1D5DB;
@@ -906,7 +906,7 @@ footer {
 }
 
 [data-theme="dark"] .contact-btn:hover .contact-icon-img {
-    filter: brightness(0) saturate(100%) invert(64%) sepia(65%) saturate(1000%) hue-rotate(190deg) brightness(103%) contrast(101%);
+    filter: brightness(0) saturate(100%) invert(74%) sepia(35%) saturate(1200%) hue-rotate(185deg) brightness(105%) contrast(101%);
 }
 
 .contact-label {
