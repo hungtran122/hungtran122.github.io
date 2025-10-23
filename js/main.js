@@ -106,11 +106,11 @@ function createProjectCard(project) {
     card.appendChild(tags);
     
     // View Details Link
-    const expandLink = document.createElement('a');
-    expandLink.className = 'project-expand';
-    expandLink.textContent = 'View Details →';
-    expandLink.href = `/projects/${project.id}.html`;
-    card.appendChild(expandLink);
+    // const expandLink = document.createElement('a');
+    // expandLink.className = 'project-expand';
+    // expandLink.textContent = 'View Details →';
+    // expandLink.href = `/projects/${project.id}.html`;
+    // card.appendChild(expandLink);
     
     return card;
 }
@@ -206,7 +206,15 @@ function renderAllProjects() {
         // Create company header
         const companyHeader = document.createElement('div');
         companyHeader.className = 'company-header';
-        companyHeader.innerHTML = `${company.name} <span class="company-separator">|</span> <span class="company-meta">${company.location} | ${company.time}</span>`;
+        let headerContent = company.name;
+        if (company.location || company.time) {
+            headerContent += ' <span class="company-separator">|</span> <span class="company-meta">';
+            const meta = [];
+            if (company.location) meta.push(company.location);
+            if (company.time) meta.push(company.time);
+            headerContent += meta.join(' | ') + '</span>';
+        }
+        companyHeader.innerHTML = headerContent;
         companySection.appendChild(companyHeader);
         
         // Create grid container

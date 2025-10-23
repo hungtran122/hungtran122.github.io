@@ -146,5 +146,20 @@
     "technologies": ["C++", "Telecom", "3G Networks"],
     "challenge": "The existing 2G BTS software needed to be upgraded to support 3G features while maintaining backward compatibility.",
     "solution": "Reused and extended the 2G architecture in C++ to develop 3G BTS software, optimizing development efficiency and ensuring seamless integration."
+  },
+  {
+    "id": "mlops",
+    "title": "ML Lifecycle Management Platform",
+    "company": "personal",
+    "date": "Sep 2025 - Oct 2025",
+    "year": "2010-2012",
+    "role": "Creator",
+    "tags": ["Personal Project"],
+    "descriptionTitle": "Designed and built a centralized ML platform integrating data management, experiment tracking, and model registry.",
+    "description": "• Created a centralized ML platform to unify data, experiment, and model management — solving communication gaps and workflow fragmentation within ML teams.\n • Demonstrated end-to-end system design skills by integrating Streamlit, Supabase (PostgreSQL), Celery, Redis, and DVC into a cohesive platform supporting multiple stakeholders.\n• Automated repetitive workflows such as data preprocessing, DVC versioning, and experiment tracking, improving productivity and reducing human error.\n • Integrated essential external tools (Weights & Biases, Slack, and custom annotation API) to enable real-time tracking, visibility, and continuous feedback loops.\n • Built a reliable and reproducible ML workflow foundation.",
+    "metrics": [],
+    "technologies": ["Streamlit", "Supabase (PostgreSQL + REST API)", "Celery", "Redis", "DVC", "Weights & Biases", "NFS"],
+    "challenge": "The existing 2G BTS software needed to be upgraded to support 3G features while maintaining backward compatibility.",
+    "solution": "Reused and extended the 2G architecture in C++ to develop 3G BTS software, optimizing development efficiency and ensuring seamless integration."
   }
 ]

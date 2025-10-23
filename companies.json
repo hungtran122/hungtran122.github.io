@@ -22,5 +22,11 @@
     "name": "NTT DATA",
     "location": "Hanoi, Vietnam",
     "time": "Sep 2010 - Oct 2012"
+  },
+  {
+    "id": "personal",
+    "name": "Personal Projects",
+    "location": null,
+    "time": null
   }
 ]

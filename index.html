@@ -21,7 +21,7 @@
         <div class="nav-logo">Tran Manh Hung</div>
         <ul class="nav-links">
             <li><a href="#about" class="nav-item">About</a></li>
-            <li><a href="#resume" class="nav-item">Resume</a></li>
+            <li><a href="#background" class="nav-item">Background</a></li>
             <li><a href="#projects" class="nav-item">Projects</a></li>
             <li><a href="#skills" class="nav-item">Skills</a></li>
         </ul>
@@ -44,7 +44,6 @@
                 </p>
                 <div class="hero-buttons">
                     <button class="btn btn-primary" onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth'})">View Projects</button>
-                    <button class="btn btn-secondary">Download Resume</button>
                 </div>
             </div>
             <div class="scroll-indicator">
@@ -59,7 +58,7 @@
             <div class="container">
                 <div class="about-content">
                     <div class="about-image">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop" alt="Profile photo">
+                        <img src="./me.jpeg" alt="Profile photo">
                     </div>
                     <div class="about-text">
                         <h2 class="section-heading">About Me</h2>
@@ -78,53 +77,58 @@
             </div>
         </section>
 
-        <!-- Resume Section -->
-        <section id="resume">
+        <!-- Background Section -->
+        <section id="background">
             <div class="container">
-                <div class="resume-content">
+                <div class="background-content">
                     <h2 class="section-heading">Background & Credentials
 </h2>
                     <div class="section-underline"></div>
 
-                    <div class="resume-grid">
+                    <div class="background-grid">
                         <!-- Education -->
-                        <div class="resume-group">
-                            <div class="resume-group-title">Education</div>
-                            <div class="resume-item">
-                                <div class="resume-item-title">Master of System Engineering</div>
-                                <div class="resume-item-subtitle">School of System Design and Management, Keio University, Japan</div>
-                                <div class="resume-item-description">Sep 2013 - Sep 2015</div>
+                        <div class="background-group">
+                            <div class="background-group-title">Education</div>
+                            <div class="background-item">
+                                <div class="background-item-title">Master of System Engineering</div>
+                                <div class="background-item-subtitle">School of System Design and Management, Keio University, Japan</div>
+                                <div class="background-item-description">Sep 2013 - Sep 2015</div>
                             </div>
-                            <div class="resume-item">
-                                <div class="resume-item-title">Bachelor of Applied Mathematics and Informatics</div>
-                                <div class="resume-item-subtitle">Faculty of Mathematics and Informatics, Hanoi University of Science and Technology, Vietnam</div>
-                                <div class="resume-item-description">Sep 2005 - Sep 2010</div>
+                            <div class="background-item">
+                                <div class="background-item-title">Bachelor of Applied Mathematics and Informatics</div>
+                                <div class="background-item-subtitle">Faculty of Mathematics and Informatics, Hanoi University of Science and Technology, Vietnam</div>
+                                <div class="background-item-description">Sep 2005 - Sep 2010</div>
+                            </div>
+                            <div class="background-item">
+                                <div class="background-item-title">High School Diploma</div>
+                                <div class="background-item-subtitle">Math Class, High School for Gifted Students, Hanoi National University of Education, Vietnam</div>
+                                <div class="background-item-description">Sep 2002 - Sep 2005</div>
                             </div>
                         </div>
 
                         <!-- Certifications & Achievements -->
-                        <div class="resume-group">
-                            <div class="resume-group-title">Certifications</div>
-                            <div class="resume-item">
-                                <div class="resume-item-title">Project Management Professional (PMP)</div>
-                                <div class="resume-item-subtitle">Project Management Institute</div>
-                                <div class="resume-item-description">Japan Chapter Certified 2015</div>
+                        <div class="background-group">
+                            <div class="background-group-title">Certifications</div>
+                            <div class="background-item">
+                                <div class="background-item-title">Project Management Professional (PMP)</div>
+                                <div class="background-item-subtitle">Project Management Institute</div>
+                                <div class="background-item-description">Japan Chapter Certified 2015</div>
                             </div>
-                            <div class="resume-item">
-                                <div class="resume-item-title">Kaggle Expert</div>
-                                <div class="resume-item-subtitle">Reached a top-0.3% global ranking (543 of 201,211) on Kaggle, the leading platform for data science competitions (Jan 2020)</div>
-                                <div class="resume-item-description">Jan 2020</div>
+                            <div class="background-item">
+                                <div class="background-item-title">Kaggle Expert</div>
+                                <div class="background-item-subtitle">Reached a top-0.3% global ranking (543 of 201,211) on Kaggle, the leading platform for data science competitions</div>
+                                <div class="background-item-description">Jan 2020</div>
                             </div>
                         </div>
 
                         <!-- Career Progression -->
-                        <div class="resume-group">
-                            <div class="resume-group-title">Machine Learning Career Evolution</div>
-                            <div class="resume-item">
-                                <div class="resume-item-title">ML Engineer → Lead ML Engineer → Manager</div>
-                                <div class="resume-item-description">2019: Started as ML Engineer</div>
-                                <div class="resume-item-description">2021: Promoted to Lead ML Engineer</div>
-                                <div class="resume-item-description">2023: Promoted to Manager</div>
+                        <div class="background-group">
+                            <div class="background-group-title">Machine Learning Career Evolution</div>
+                            <div class="background-item">
+                                <div class="background-item-title">ML Engineer → Lead ML Engineer → Manager</div>
+                                <div class="background-item-description">2019: Started as ML Engineer</div>
+                                <div class="background-item-description">2021: Promoted to Lead ML Engineer</div>
+                                <div class="background-item-description">2023: Promoted to Manager</div>
                             </div>
                         </div>                        
                     </div>
@@ -215,7 +219,7 @@
                         <!-- Model Optimization -->
                         <div class="skill-category">
                             <div class="skill-category-name">Model Optimization</div>
-                            <div class="skill-items">Pruning, Quantization, Layer Fusion, Knowledge Distillation</div>
+                            <div class="skill-items">Pruning, Quantization, Layer Fusion, Knowledge Distillation, Operator Fusion</div>
                         </div>
                         
                         <!-- Database -->
@@ -233,18 +237,61 @@
     <footer>
         <div class="container">
             <div class="footer-content">
-                <p class="footer-text">Your Name © 2025 | Built with passion for ML</p>
+                <p class="footer-text">Tran Manh Hung © 2024</p>
                 <ul class="footer-links">
                     <li><a href="#about">About</a></li>
-                    <li><a href="#resume">Resume</a></li>
+                    <li><a href="#background">Background</a></li>
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#skills">Skills</a></li>
                 </ul>
-                <p class="footer-text">Crafted with attention to detail</p>
+                <p class="footer-text">The best design is the simplest one that works.</p>
             </div>
         </div>
     </footer>
 
     <script src="js/main.js"></script>
+
+    <!-- Floating Contact Widget -->
+    <div class="floating-contact">
+        <button class="contact-btn" data-url="tmhung122@gmail.com" data-tooltip="Click to copy" onclick="copyContactUrl(event)" title="Click to copy email">
+            <span class="contact-icon">✉</span>
+            <span class="contact-label">Email</span>
+            <span class="contact-url">tmhung122@gmail.com</span>
+        </button>
+        <a href="https://github.com/hungtran122" target="_blank" class="contact-btn" data-tooltip="Click to open" title="Open GitHub">
+            <span class="contact-icon">⚙</span>
+            <span class="contact-label">GitHub</span>
+            <span class="contact-url">https://github.com/hungtran122</span>
+        </a>
+        <a href="https://www.linkedin.com/in/tran-manh-hung-a2550053" target="_blank" class="contact-btn" data-tooltip="Click to open" title="Open LinkedIn">
+            <span class="contact-icon">💼</span>
+            <span class="contact-label">LinkedIn</span>
+            <span class="contact-url">https://www.linkedin.com/in/tran-manh-hung-a2550053</span>
+        </a>
+        <a href="https://www.kaggle.com/tmhung" target="_blank" class="contact-btn" data-tooltip="Click to open" title="Open Kaggle">
+            <span class="contact-icon">🏆</span>
+            <span class="contact-label">Kaggle</span>
+            <span class="contact-url">https://www.kaggle.com/tmhung</span>
+        </a>
+    </div>
+
+    <script>
+        function copyContactUrl(event) {
+            event.preventDefault();
+            const btn = event.currentTarget;
+            const url = btn.dataset.url;
+            const labelSpan = btn.querySelector('.contact-label');
+            const originalLabel = labelSpan.textContent;
+            
+            navigator.clipboard.writeText(url).then(() => {
+                labelSpan.textContent = 'Copied!';
+                setTimeout(() => {
+                    labelSpan.textContent = originalLabel;
+                }, 2000);
+            }).catch(() => {
+                alert('Failed to copy');
+            });
+        }
+    </script>
 </body>
 </html>
